@@ -22,8 +22,5 @@ class entity {
     parent.appendChild(this.element);
   }
 
-  unmount(parent) {
-    parent.removeChild(this.element);
-  }
 
 }

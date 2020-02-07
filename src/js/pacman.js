@@ -47,8 +47,7 @@ class Pacman {
   if (this.detectCollision(this.xposition+1, this.yposition) === true) {
     this.xposition += 1;
   } else if (this.detectCollision(this.xposition+1, this.yposition)[2] === 'apple') {
-    stage1.removeEntity(this.detectCollision(this.xposition+1, this.yposition))
-    stage1.unmount(this.detectCollision(this.xposition+1, this.yposition));
+    stage1.removeEntity(this.detectCollision(this.xposition+1, this.yposition));
     this.xposition += 1;
   }
 }

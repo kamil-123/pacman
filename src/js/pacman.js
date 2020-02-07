@@ -1,12 +1,13 @@
 const tileSize = 85;
 
 class Pacman {
-  constructor(xposition, yposition, mouth, Xmax, Ymax){
+  constructor(mouth, Xmax, Ymax){
     this.xposition = 0;
     this.yposition = 0;
     this.mouth = mouth;
     this.Xmax = Xmax;
     this.Ymax = Ymax;
+    this.stage = stage1;
   }
 
   updatexMax() {
@@ -19,13 +20,21 @@ class Pacman {
     return this.Ymax;
   }
 
+  detectCollision(futureX, futureY) {
+    if(stage1.collisionDetection(futureX, futureY) === null) {
+      return true;
+    } else {
+      console.log(stage1.collisionDetection(futureX, futureY));
+      return stage1.collisionDetection(futureX, futureY);
+    }
+    
+  }
+
   moveRight() {
     this.element.style.backgroundPositionX = '85px';
-
     if(this.xposition === this.Xmax - 1) {
       return;
-    }
-    this.xposition += 1;
+    }   
   if (this.mouth === 'closed') {
     this.element.style.backgroundPositionX = '0px';
     this.element.style.backgroundPositionY = '0px';
@@ -35,7 +44,14 @@ class Pacman {
     this.element.style.backgroundPositionY = '0px';
     this.mouth = 'closed';
   }
+  if (this.detectCollision(this.xposition+1, this.yposition) === true) {
+    this.xposition += 1;
+  } else if (this.detectCollision(this.xposition+1, this.yposition)[2] === 'apple') {
+    stage1.removeEntity(this.detectCollision(this.xposition+1, this.yposition))
+    stage1.unmount(this.detectCollision(this.xposition+1, this.yposition));
+    this.xposition += 1;
   }
+}
 
   moveLeft() {
     this.element.style.backgroundPositionX = '85px';
@@ -43,8 +59,6 @@ class Pacman {
     if(this.xposition === 0) {
       return;
     }
-    this.xposition -= 1;
-
   if (this.mouth === 'open') {
     this.element.style.backgroundPositionX = '0px';
     this.element.style.backgroundPositionY = '255px';
@@ -54,7 +68,9 @@ class Pacman {
     this.element.style.backgroundPositionY = '255px';
     this.mouth = 'open';
   }
-
+  if (this.detectCollision(this.xposition-1, this.yposition) === true) {
+    this.xposition -= 1;
+  }
   }
 
   moveDown() {
@@ -62,7 +78,6 @@ class Pacman {
     if(this.yposition === this.Ymax - 1) {
       return;
     }
-    this.yposition += 1;
     if (this.mouth === 'open') {
       this.element.style.backgroundPositionX = '0px';
       this.element.style.backgroundPositionY = '170px';
@@ -72,6 +87,9 @@ class Pacman {
       this.element.style.backgroundPositionY = '170px';
       this.mouth = 'open';
       }
+    if (this.detectCollision(this.xposition, this.yposition+1) === true) {
+      this.yposition += 1;
+    }
   }
 
   moveUp() {
@@ -79,7 +97,6 @@ class Pacman {
     if(this.yposition === 0) {
       return;
     }
-    this.yposition -= 1;
     if (this.mouth === 'open') {
       this.element.style.backgroundPositionX = '0px';
       this.element.style.backgroundPositionY = '85px';
@@ -88,6 +105,9 @@ class Pacman {
       this.element.style.backgroundPositionX = '85px';
       this.element.style.backgroundPositionY = '85px';
       this.mouth = 'open';
+    }
+    if (this.detectCollision(this.xposition, this.yposition-1) === true) {
+      this.yposition -= 1;
     }
   }
 

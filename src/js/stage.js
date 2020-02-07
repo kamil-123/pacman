@@ -4,7 +4,16 @@ class stage {
     this.countY = countY;
     this.tileSize = tileSize;
     this.entityArray = [];
+  }
 
+  removeEntity(entity) {
+    for (let i = 0; i < this.entityArray.length; i += 1){
+      if(this.entityArray[i][0] === entity[0]) {
+        if(this.entityArray[i][1] === entity[1]) {
+          this.entityArray.splice(i,1);
+        }
+      }
+    }
   }
   maxX() {
     return this.countX;
@@ -16,11 +25,11 @@ class stage {
     for (let i = 0; i < this.entityArray.length; i += 1){
       if(this.entityArray[i][0] === x) {
         if(this.entityArray[i][1] === y) {
-          return this.entityArray[i][2];
-          
+          return this.entityArray[i];
         }
       }
     }
+    return null;
   }
 
   render(){

@@ -10,7 +10,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   pacman1.mount(stage);
   // pacman1.updatexMax();
   wall1.mount(stage);
-  
+  const bomb1 = new entity(3,2,'bomb');
+  bomb1.mount(stage);
+
+  const apple1 = new entity(2,2,'apple');
+  apple1.mount(stage);
+
+
   console.log(pacman1);
 
 });

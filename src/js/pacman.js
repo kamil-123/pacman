@@ -24,7 +24,6 @@ class Pacman {
     if(stage1.collisionDetection(futureX, futureY) === null) {
       return true;
     } else {
-      console.log(stage1.collisionDetection(futureX, futureY));
       return stage1.collisionDetection(futureX, futureY);
     }
     
@@ -46,11 +45,16 @@ class Pacman {
   }
   if (this.detectCollision(this.xposition+1, this.yposition) === true) {
     this.xposition += 1;
-  } else if (this.detectCollision(this.xposition+1, this.yposition)[2] === 'apple') {
-    stage1.removeEntity(this.detectCollision(this.xposition+1, this.yposition));
+  } else if (this.detectCollision(this.xposition+1, this.yposition).type === 'apple') {
+    this.detectCollision(this.xposition+1, this.yposition).element.parentNode.removeChild(this.detectCollision(this.xposition+1, this.yposition).element);
     this.xposition += 1;
+    stage1.removeEntity(this.detectCollision(this.xposition+1, this.yposition));
   }
+      // this.xposition += 1;
+      // console.log(this.detectCollision(this.xposition+1, this.yposition).type);
+      // stage1.removeEntity(this.detectCollision(this.xposition+1, this.yposition));
 }
+
 
   moveLeft() {
     this.element.style.backgroundPositionX = '85px';

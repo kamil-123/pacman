@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const apple1 = new entity(2,2,'apple');
   apple1.mount(stage);
+  console.log(apple1.posY);
 
 
   console.log(pacman1);

@@ -7,10 +7,14 @@ class stage {
   }
 
   removeEntity(entity) {
+    if(undefined) {
+      return;
+    }
     for (let i = 0; i < this.entityArray.length; i += 1){
-      if(this.entityArray[i][0] === entity[0]) {
-        if(this.entityArray[i][1] === entity[1]) {
-          this.entityArray.splice(i,1);
+      if(this.entityArray[i].posX === entity.posX) {
+        if(this.entityArray[i].posY === entity.posY) {
+          console.log(entity);
+          this.entityArray.splice(i+1,1);
         }
       }
     }
@@ -24,8 +28,8 @@ class stage {
   }
   collisionDetection(x,y){
     for (let i = 0; i < this.entityArray.length; i += 1){
-      if(this.entityArray[i][0] === x) {
-        if(this.entityArray[i][1] === y) {
+      if(this.entityArray[i].posX === x) {
+        if(this.entityArray[i].posY === y) {
           return this.entityArray[i];
         }
       }

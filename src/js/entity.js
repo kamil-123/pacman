@@ -6,7 +6,7 @@ class entity {
   }
 
   pushArray(){
-    stage1.entityArray.push([this.posX,this.posY,this.type]);
+    stage1.entityArray.push(this);
   }
 
   render() {
@@ -20,6 +20,10 @@ class entity {
     this.render();
     this.pushArray();
     parent.appendChild(this.element);
+  }
+
+  unmount() {
+    this.element.parentNode.removeChild(this.element);
   }
 
 

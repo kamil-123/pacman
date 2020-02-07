@@ -4,6 +4,12 @@ class stage {
     this.countY = countY;
     this.tileSize = tileSize;
   }
+  maxX() {
+    return this.countX;
+  }
+  maxY() {
+    return this.countY;
+  }
   render(){
     this.element = document.createElement('div');
     this.element.className='stage';

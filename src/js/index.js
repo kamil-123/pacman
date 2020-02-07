@@ -1,28 +1,34 @@
 const pacman = document.querySelector('.entity--pac');
-let backgroundStyleRight = 0;
+let mouth = 'closed';
 let xpos = 100;
 let ypos = 100;
 const tileSize = 85;
 
+const update = () => {
+  pacman.style.left = String(xpos) + `px`;
+  pacman.style.top = String(ypos) + `px`;
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  update();
+
 
 
   document.addEventListener('keydown', (event) => {
     if(event.key === 'ArrowRight') {
       xpos += tileSize;
       pacman.style.left = String(xpos) + `px`;
-    }
-    if (backgroundStyleRight === 0) {
+    if (mouth === 'closed') {
       pacman.style.backgroundPositionX = '0px';
       pacman.style.backgroundPositionY = '0px';
-      backgroundStyleRight = 1;
-      console.log(backgroundStyleRight);
-
+      mouth = 'open';
     } else { 
       pacman.style.backgroundPositionX = '85px';
       pacman.style.backgroundPositionY = '0px';
-      backgroundStyleRight = 0;
-      console.log(backgroundStyleRight);
+      mouth = 'closed';
+    }
     }
   });
 
@@ -31,17 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
       pacman.style.backgroundPositionX = '85px';
       xpos -= tileSize;
       pacman.style.left = String(xpos) + `px`;
-    } 
-    if (backgroundStyleRight === 'open') {
+   
+    if (mouth === 'open') {
       pacman.style.backgroundPositionX = '0px';
       pacman.style.backgroundPositionY = '255px';
-      backgroundStyleRight = 'closed';
+      mouth = 'closed';
     } else { 
       pacman.style.backgroundPositionX = '85px';
       pacman.style.backgroundPositionY = '255px';
-      backgroundStyleRight = 'open';
-
-
+      mouth = 'open';
+    }
     }
   });
 
@@ -51,6 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
       pacman.style.backgroundPositionX = '85px';
       ypos -= tileSize;
       pacman.style.top = String(ypos) + `px`;
+      if (mouth === 'open') {
+        pacman.style.backgroundPositionX = '0px';
+        pacman.style.backgroundPositionY = '85px';
+        mouth = 'closed';
+      } else { 
+        pacman.style.backgroundPositionX = '85px';
+        pacman.style.backgroundPositionY = '85px';
+        mouth = 'open';
+      }
     }
   });
 
@@ -59,8 +73,18 @@ document.addEventListener('DOMContentLoaded', () => {
       pacman.style.backgroundPositionX = '85px';
       ypos += tileSize;
       pacman.style.top = String(ypos) + `px`;
+      if (mouth === 'open') {
+        pacman.style.backgroundPositionX = '0px';
+        pacman.style.backgroundPositionY = '170px';
+        mouth = 'closed';
+      } else { 
+        pacman.style.backgroundPositionX = '85px';
+        pacman.style.backgroundPositionY = '170px';
+        mouth = 'open';
+      }
     }
   });
+
 });
 
 

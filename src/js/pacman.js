@@ -1,16 +1,31 @@
 const tileSize = 85;
 
 class Pacman {
-  constructor(xposition, yposition, mouth){
-    this.xposition = xposition;
-    this.yposition = yposition;
+  constructor(xposition, yposition, mouth, Xmax, Ymax){
+    this.xposition = 0;
+    this.yposition = 0;
     this.mouth = mouth;
-    
+    this.Xmax = Xmax;
+    this.Ymax = Ymax;
+  }
+
+  updatexMax() {
+    this.Xmax = stage1.maxX();
+    return this.Xmax;
+  }
+
+  updateyMax() {
+    this.Ymax = stage1.maxY();
+    return this.Ymax;
   }
 
   moveRight() {
     this.element.style.backgroundPositionX = '85px';
-    this.xposition += tileSize;
+
+    if(this.xposition === this.Xmax - 1) {
+      return;
+    }
+    this.xposition += 1;
   if (this.mouth === 'closed') {
     this.element.style.backgroundPositionX = '0px';
     this.element.style.backgroundPositionY = '0px';
@@ -24,8 +39,12 @@ class Pacman {
 
   moveLeft() {
     this.element.style.backgroundPositionX = '85px';
-    this.xposition -= tileSize;
- 
+
+    if(this.xposition === 0) {
+      return;
+    }
+    this.xposition -= 1;
+
   if (this.mouth === 'open') {
     this.element.style.backgroundPositionX = '0px';
     this.element.style.backgroundPositionY = '255px';
@@ -40,7 +59,10 @@ class Pacman {
 
   moveDown() {
     this.element.style.backgroundPositionX = '85px';
-    this.yposition += tileSize;
+    if(this.yposition === this.Ymax - 1) {
+      return;
+    }
+    this.yposition += 1;
     if (this.mouth === 'open') {
       this.element.style.backgroundPositionX = '0px';
       this.element.style.backgroundPositionY = '170px';
@@ -54,7 +76,10 @@ class Pacman {
 
   moveUp() {
     this.element.style.backgroundPositionX = '85px';
-    this.yposition -= tileSize;
+    if(this.yposition === 0) {
+      return;
+    }
+    this.yposition -= 1;
     if (this.mouth === 'open') {
       this.element.style.backgroundPositionX = '0px';
       this.element.style.backgroundPositionY = '85px';
@@ -101,13 +126,15 @@ class Pacman {
 }
 
   update() {
-    this.element.style.left = String(this.xposition) + `px`;
-    this.element.style.top = String(this.yposition) + `px`;  
+    this.element.style.left = String(this.xposition*tileSize) + `px`;
+    this.element.style.top = String(this.yposition*tileSize) + `px`;  
   }
 
   mount(parent) {
     this.render();
     this.update();
+    this.updatexMax();
+    this.updateyMax();
     parent.appendChild(this.element);
   }
 }

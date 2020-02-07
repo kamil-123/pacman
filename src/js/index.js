@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   const stage = document.querySelector('.stage');
   const pacman1 = new Pacman(100, 100, 'closed');
   pacman1.mount(stage);
-
+  pacman1.updatexMax();
+  console.log(pacman1);
 
 });
 

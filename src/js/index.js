@@ -1,5 +1,5 @@
 const app=document.querySelector('#app');
-  const stage1 = new stage(6,3,85);
+  const stage1 = new stage(6,6,85);
   stage1.mount(app);
   // 
 
@@ -7,15 +7,20 @@ document.addEventListener('DOMContentLoaded',()=>{
   const stage = document.querySelector('.stage');
   const pacman1 = new Pacman(100, 100, 'closed');
   const wall1 = new entity(1,1,'wall');
+  const wall2 = new entity(4,5,'wall');
+  const wall3 = new entity(5,4,'wall');
+
   pacman1.mount(stage);
   // pacman1.updatexMax();
   wall1.mount(stage);
+  wall2.mount(stage);
+  wall3.mount(stage);
+
   const bomb1 = new entity(3,2,'bomb');
   bomb1.mount(stage);
 
   const apple1 = new entity(2,2,'apple');
   apple1.mount(stage);
-  console.log(apple1.posY);
 
 
   console.log(pacman1);

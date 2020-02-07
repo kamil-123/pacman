@@ -48,7 +48,12 @@ class Pacman {
   } else if (this.detectCollision(this.xposition+1, this.yposition).type === 'apple') {
     this.detectCollision(this.xposition+1, this.yposition).element.parentNode.removeChild(this.detectCollision(this.xposition+1, this.yposition).element);
     this.xposition += 1;
-    stage1.removeEntity(this.detectCollision(this.xposition+1, this.yposition));
+    stage1.removeEntity(this.detectCollision(this.xposition, this.yposition));
+  } else if (this.detectCollision(this.xposition+1, this.yposition).type === 'bomb') {
+      this.detectCollision(this.xposition+1, this.yposition).element.parentNode.removeChild(this.detectCollision(this.xposition+1, this.yposition).element);
+      const object = this.detectCollision(this.xposition+1, this.yposition);
+      this.xposition += 1;
+      stage1.removeEntity(object);
   }
       // this.xposition += 1;
       // console.log(this.detectCollision(this.xposition+1, this.yposition).type);

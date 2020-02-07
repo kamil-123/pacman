@@ -14,7 +14,7 @@ class stage {
       if(this.entityArray[i].posX === entity.posX) {
         if(this.entityArray[i].posY === entity.posY) {
           console.log(entity);
-          this.entityArray.splice(i+1,1);
+          this.entityArray.splice(i,1);
         }
       }
     }

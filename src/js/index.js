@@ -6,8 +6,11 @@ const app=document.querySelector('#app');
 document.addEventListener('DOMContentLoaded',()=>{
   const stage = document.querySelector('.stage');
   const pacman1 = new Pacman(100, 100, 'closed');
+  const wall1 = new entity(1,1,'wall');
   pacman1.mount(stage);
-  pacman1.updatexMax();
+  // pacman1.updatexMax();
+  wall1.mount(stage);
+  
   console.log(pacman1);
 
 });

@@ -5,8 +5,21 @@ class entity {
     this.type = type;
   }
 
+  pushArray(){
+    stage1.entityArray.push([this.posX,this.posY,this.type]);
+  }
+
   render() {
     this.element = document.createElement('div');
-    this.element.className = ''
+    this.element.className = `entity entity--${this.type}`;
+    this.element.style.left = `${this.posX * 85}px`;
+    this.element.style.top = `${this.posY * 85}px`;
+    return this.element;
   }
+  mount(parent) {
+    this.render();
+    this.pushArray();
+    parent.appendChild(this.element);
+  }
+
 }

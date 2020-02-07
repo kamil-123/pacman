@@ -1,4 +1,15 @@
-document.addEventListener('DOMContentLoaded',()=>)
+const app=document.querySelector('#app');
+  const stage1 = new stage(6,3,85);
+  stage1.mount(app);
+  // 
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const stage = document.querySelector('.stage');
+  const pacman1 = new Pacman(100, 100, 'closed');
+  pacman1.mount(stage);
+
+
+});
 
 
 

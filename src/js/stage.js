@@ -18,6 +18,3 @@ class stage {
   }
 }
 
-const app=document.querySelector('#app');
-const stage1 = new stage(10,10,85);
-stage1.mount(app);

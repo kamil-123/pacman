@@ -112,10 +112,10 @@ class Pacman {
   }
 }
 
-const app = document.querySelector('#app');
-const pacman1 = new Pacman(100, 100, 'closed');
-pacman1.mount(app);
+// const app = document.querySelector('.stage');
+// const pacman1 = new Pacman(100, 100, 'closed');
+// pacman1.mount(app);
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 
-})
+// })
